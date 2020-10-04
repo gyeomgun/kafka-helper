@@ -25,24 +25,24 @@ services:
     ports:
       - 9092:9092
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
       KAFKA_ADVERTISED_PORT: 9092
       KAFKA_CREATE_TOPICS: "common-deadletter-v1:1:1,common-maintenance-v1:1:1" # Topic명:Partition개수:Replica개수
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-  app:
-    build:
-      context: ./
-      dockerfile: ./kafka-helper-web/Dockerfile
-    image: kafka-helper-web # 우리가 Dockerfile에서 지정했던 app 이름
-    ports:
-      - 8081:8081
-    depends_on:
-      - mongodb
-      - zookeeper
-      - kafka
-    links:
-      - mongodb
-      - zookeeper
-      - kafka
+#  app:
+#    build:
+#      context: ./
+#      dockerfile: ./kafka-helper-web/Dockerfile
+#    image: kafka-helper-web # 우리가 Dockerfile에서 지정했던 app 이름
+#    ports:
+#      - 8081:8081
+#    depends_on:
+#      - mongodb
+#      - zookeeper
+#      - kafka
+#    links:
+#      - mongodb
+#      - zookeeper
+#      - kafka
