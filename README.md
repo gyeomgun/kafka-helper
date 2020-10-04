@@ -31,10 +31,10 @@ kafka-helper
 2. connect `http://localhost:8081`
 3. shut down `docker-compose down`
 4. start consumer example
-   <img width="850" alt="스크린샷 2020-10-05 오전 12 27 48" src="https://user-images.githubusercontent.com/11720532/95019664-a3a60580-06a1-11eb-838b-43fdf816f312.png">
+  <img width="850" alt="스크린샷 2020-10-05 오전 12 27 48" src="https://user-images.githubusercontent.com/11720532/95019664-a3a60580-06a1-11eb-838b-43fdf816f312.png">
    
 5. start publisher example
-   <img width="707" alt="스크린샷 2020-10-05 오전 12 31 05" src="https://user-images.githubusercontent.com/11720532/95019740-17e0a900-06a2-11eb-8436-670c075810a6.png">
+  <img width="707" alt="스크린샷 2020-10-05 오전 12 31 05" src="https://user-images.githubusercontent.com/11720532/95019740-17e0a900-06a2-11eb-8436-670c075810a6.png">
    
 6. publish `curl http://localhost:8093/pub`
 7. You can check message log and deadletter
