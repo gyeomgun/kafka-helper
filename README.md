@@ -25,7 +25,7 @@ kafka-helper
 <img width="1488" alt="3" src="https://user-images.githubusercontent.com/11720532/95019343-bfa8a780-069f-11eb-8e5b-3cb5970b0841.png">
 <img width="1488" alt="4" src="https://user-images.githubusercontent.com/11720532/95019344-c0d9d480-069f-11eb-838e-8eeb9c068372.png">
 
-## how to run
+## how to run (sample)
 - Docker, Docker-compose, npm..
 1. `start_up.sh`
 2. start kafka-helper-web 
@@ -40,5 +40,20 @@ kafka-helper
 7. publish `curl http://localhost:8093/pub`
 8. You can check message log and deadletter
 
- 
+## Using
+- Database
+: `dead_letter`, `message_log` collection must be `capped collection` (Size is adjusted according to available capacity)
+: `hashkey_info` hashkey and group_id column must be unique index
+: `host_info` add index to updated_at 
+- kafka-helper-adapter
+: publish jar to your own Nexus (or local maven repository)
+: another project add dependency this adapter only
+: Create a DTO for which you want to publish a message in this project
+: Add Enum value in `Topic.java`
+- kafka-helper-web
+: Register hashkey for consume group
+- Consumer
+: Make a consumer using hashkey which has generated above
+- Publisher
+: Just send using `kafkaHelperProducer<DTO>`
 
