@@ -1,0 +1,10 @@
+rootProject.name = 'kafka-helper'
+include 'kafka-helper-web'
+include 'kafka-helper-interface'
+include 'kafka-helper-batch'
+include 'kafka-helper-domain'
+include 'kafka-adapter'
+include 'kafka-helper-adapter'
+include 'consumer-example'
+include 'publisher-example'
+

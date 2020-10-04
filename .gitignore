@@ -1,0 +1,8 @@
+.gradle
+.idea
+consumer-example/build
+consumer-example/out
+publisher-example/build
+publisher-example/out
+data
+frontend/node_modules

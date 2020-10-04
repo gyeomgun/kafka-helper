@@ -1,0 +1,9 @@
+server.port: 8093
+kafka:
+  bootstrap:
+    servers: localhost:9092
+  helper:
+    interface:
+      url: http://localhost:8081
+  topic:
+    maintenance: common-maintenance-v1

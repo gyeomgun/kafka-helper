@@ -1,0 +1,19 @@
+package com.hg.kafka.helper.web.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class RouteController {
+    private static final String INDEX = "index";
+
+    @RequestMapping(value = "/")
+    public String index() {
+        return INDEX;
+    }
+
+    @RequestMapping(value = "/{path:[^\\.]*}")
+    public String redirect() {
+        return "forward:/";
+    }
+}

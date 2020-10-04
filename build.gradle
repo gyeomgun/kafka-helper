@@ -1,0 +1,64 @@
+buildscript {
+    ext {
+        springBootVersion = '2.2.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+    group 'com.hg.kafka-helper'
+    version '1.0.0-SNAPSHOT'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'groovy'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        jcenter()
+    }
+
+    dependencies {
+        implementation 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testImplementation 'org.spockframework:spock-core:1.3-groovy-2.5'
+        testImplementation 'org.spockframework:spock-spring:1.3-groovy-2.5'
+    }
+}
+
+project(':kafka-helper-domain') {
+    dependencies {
+
+    }
+}
+
+project(':kafka-helper-interface') {
+    dependencies {
+
+    }
+}
+
+project(':kafka-helper-web') {
+    dependencies {
+        compile project(':kafka-helper-domain')
+        compile project(':kafka-helper-adapter')
+    }
+}
+
+project(':kafka-helper-batch') {
+    dependencies {
+
+    }
+}

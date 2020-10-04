@@ -1,0 +1,12 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://mongodb:27017/kafka_helper
+kafka:
+  bootstrap:
+    servers: kafka:9092
+  helper:
+    interface:
+      url: http://localhost:8081
+  topic:
+    maintenance: common-maintenance-v1
