@@ -142,7 +142,6 @@ public abstract class AbstractKafkaHelperConsumer<T extends KafkaDefaultDTO>
     @Override
     public void afterPropertiesSet() {
         try {
-
             setId(getHostName() + UUID.randomUUID());
             setTopics(getTopicArray(getCustomTopics()));
             method = AbstractKafkaHelperConsumer.class.getDeclaredMethod("receive", ConsumerRecord.class);
@@ -363,6 +362,7 @@ public abstract class AbstractKafkaHelperConsumer<T extends KafkaDefaultDTO>
                 container.start();
             }
         } catch (KafkaException e) {
+            log.warn("Failed to start", e);
             return false;
         }
 
@@ -379,6 +379,7 @@ public abstract class AbstractKafkaHelperConsumer<T extends KafkaDefaultDTO>
                 container.stop();
             }
         } catch (KafkaException e) {
+            log.warn("Failed to stop", e);
             return false;
         }
 

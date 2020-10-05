@@ -12,7 +12,6 @@ public abstract class KafkaDefaultDTO {
 
     private String consumerGroupId = null;
     private String kafkaTraceId = IdGen.nextUuid();
-    private Long requeueCount = 0L;
 
     public Object getPartitionKey() {
         return null;

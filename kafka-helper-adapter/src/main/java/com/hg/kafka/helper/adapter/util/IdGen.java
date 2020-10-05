@@ -35,15 +35,6 @@ public final class IdGen {
 
     }
 
-    public static long byteToLongBigEndian(byte[] b) {
-        long l = 0;
-        for (int i = 0; i < b.length; i ++) {
-            l <<= Byte.SIZE;
-            l |= (b[i] & 0xFF);
-        }
-        return l;
-    }
-
     public static byte[] mergeBytes(byte[] b1, byte[] b2) {
         byte[] b = new byte[b1.length + b2.length];
         System.arraycopy(b1, 0, b, 0, b1.length);
