@@ -43,11 +43,11 @@ public class MessageLoggingConsumer {
     public void receive(ConsumerRecord<String, String> consumerRecord) {
         try {
             Map map = mapper.readValue(consumerRecord.value(), Map.class);
-            MessageLog messageLog = new MessageLog();
-            messageLog.setTopic(consumerRecord.topic());
-            messageLog.setMessageId(map.get("messageId").toString());
-            messageLog.setMessageJson(consumerRecord.value());
-            messageLog.setCreatedAt(new Date());
+            MessageLog messageLog = new MessageLog(null,
+                    map.get("messageId").toString(),
+                    consumerRecord.value(),
+                    consumerRecord.topic(),
+                    "env", new Date());
 
             messageLogRepository.save(messageLog);
         } catch (JsonProcessingException e) {

@@ -52,11 +52,7 @@ public class HashkeyController implements ConsumerGroupClient {
                              @PathVariable String host,
                              @PathVariable String status) {
         HostInfo hostInfo = hostInfoRepository.findById(host)
-                .orElse(HostInfo.builder()
-                        .id(host)
-                        .hostName(host)
-                        .hashkey(hashkey)
-                        .build());
+                .orElse(new HostInfo(null, host, host, hashkey, new Date()));
 
         hostInfo.setStatus(status);
         hostInfo.setUpdatedAt(new Date());

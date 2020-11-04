@@ -21,19 +21,19 @@ public class DeadLetterConsumer extends AbstractKafkaHelperConsumer<DeadLetterDT
 
     @Override
     public void process(DeadLetterDTO result) throws Exception {
-        DeadLetter deadLetter = new DeadLetter();
-        deadLetter.setTopic(result.getTopic());
-        deadLetter.setStatus("PENDING");
-        deadLetter.setReason(result.getReason());
-        deadLetter.setPartition(result.getPartition());
-        deadLetter.setOffset(result.getOffset());
-        deadLetter.setMessageJson(result.getMessageJson());
-        deadLetter.setMessageId(result.getMessageId());
-        deadLetter.setEnvironment(result.getEnvironment());
-        deadLetter.setKafkaTraceId(result.getKafkaTraceId());
-        deadLetter.setGroupId(result.getGroupId());
-        deadLetter.setCreatedAt(new Date());
-        deadLetter.setUpdatedAt(new Date());
+        DeadLetter deadLetter = new DeadLetter(null,
+                result.getMessageId(),
+                result.getMessageJson(),
+                result.getReason(),
+                result.getTopic(),
+                "PENDING",
+                result.getPartition(),
+                result.getOffset(),
+                result.getEnvironment(),
+                new Date(),
+                new Date(),
+                result.getKafkaTraceId(),
+                result.getGroupId());
         deadLetterRepository.save(deadLetter);
     }
 

@@ -38,14 +38,14 @@ public class ConsumerGroupController {
         Preconditions.checkArgument(!StringUtils.isEmpty(group.getGroupId()), "`groupId` must not be empty");
         Preconditions.checkArgument(!StringUtils.isEmpty(group.getName()), "`name` must not be empty");
 
-        HashkeyInfo hashkeyInfo = new HashkeyInfo();
-        hashkeyInfo.setUpdatedAt(new Date());
-        hashkeyInfo.setCreatedAt(new Date());
-        hashkeyInfo.setTopic(topic);
-        hashkeyInfo.setName(group.getName());
-        hashkeyInfo.setGroupId(group.getGroupId());
-        hashkeyInfo.setDescription(group.getDesc());
-        hashkeyInfo.setHashkey(group.getHashkey());
+        HashkeyInfo hashkeyInfo = new HashkeyInfo(null,
+                group.getHashkey(),
+                group.getName(),
+                topic,
+                group.getDesc(),
+                group.getGroupId(),
+                new Date(),
+                new Date());
 
         hashkeyInfoRepository.save(hashkeyInfo);
 
